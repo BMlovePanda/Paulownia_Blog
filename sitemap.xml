@@ -232,6 +232,27 @@
     <priority>0.2</priority>
   </url>
   
+  <url>
+    <loc>https://blog.paulownia.top/tags/AI/</loc>
+    <lastmod>2026-04-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.paulownia.top/tags/Vibe-coding/</loc>
+    <lastmod>2026-04-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.paulownia.top/tags/%E7%AB%9E%E8%B5%9B%E5%B9%B3%E5%8F%B0/</loc>
+    <lastmod>2026-04-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
 
   
   <url>
